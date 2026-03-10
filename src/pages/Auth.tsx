@@ -51,7 +51,7 @@ const Auth = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
     const { error } = await signIn(email, password);
     setIsSubmitting(false);
@@ -66,6 +66,7 @@ const Auth = () => {
       }
     } else {
       toast.success('Welcome back!');
+      await new Promise(resolve => setTimeout(resolve, 100));
       navigate('/dashboard');
     }
   };
